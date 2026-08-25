@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12060a">
+<title>Rishal &amp; Susmi &middot; The Nikkah &middot; 12th September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0d0605;
+    --maroon-950:#230508;
+    --maroon-900:#390911;
+    --maroon-800:#5c0f18;
+    --crimson-600:#7c1420;
+    --crimson-500:#9c1c28;
+    --ivory:#f6f0e8;
+    --ivory-dim:#e7ded2;
+    --rose-line:#c98f8a;
+    --card-max:560px;
+    --img-hero: url('https://images.unsplash.com/photo-1673026448806-6d6c00bbba29?auto=format&fit=crop&w=1600&q=75');
+    --img-bloom: url('https://images.unsplash.com/photo-1591148782739-5bc858f02748?auto=format&fit=crop&w=1400&q=75');
+    --img-single: url('https://images.unsplash.com/photo-1760550339263-2c6a386ec09b?auto=format&fit=crop&w=1200&q=75');
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--black);
+    color:var(--ivory);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:var(--card-max);
+    margin:0 auto;
+    position:relative;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,0.85);
+  }
+
+  .eyebrow{
+    font-family:'Cinzel', serif;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    font-size:clamp(10px,1.6vw,12px);
+    font-weight:500;
+    display:inline-flex; align-items:center; gap:12px;
+  }
+  .eyebrow svg{ width:12px; height:12px; opacity:0.8; }
+
+  .title{
+    font-family:'Cinzel', serif;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+
+  .display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-style:italic;
+    line-height:1.05;
+  }
+
+  .lede{
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(17px,2.2vw,21px);
+    line-height:1.65;
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity 0.95s cubic-bezier(.2,.7,.2,1), transform 0.95s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal.delay-1{ transition-delay:0.12s; }
+  .reveal.delay-2{ transition-delay:0.26s; }
+  .reveal.delay-3{ transition-delay:0.4s; }
+
+  /* ---------- progress rail ---------- */
+  .progress-rail{ position:fixed; top:0; left:0; height:2px; width:100%; background:rgba(156,28,40,0.18); z-index:50; }
+  .progress-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--crimson-600),var(--rose-line)); transition:width 0.08s linear; }
+
+  /* ---------- sections ---------- */
+  section{ position:relative; padding:96px 9vw 108px; display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden; }
+  .dark{ background:radial-gradient(ellipse at 50% -10%, var(--maroon-900) 0%, var(--black) 75%); color:var(--ivory); }
+  .light{ background:var(--ivory); color:var(--maroon-950); }
+  .maroon{
+    background-image: linear-gradient(180deg, rgba(57,9,17,0.93), rgba(35,5,8,0.96)), var(--img-bloom);
+    background-size:cover; background-position:center; background-blend-mode:multiply;
+    color:var(--ivory);
+  }
+  .light .eyebrow{ color:var(--crimson-600); }
+  .dark .eyebrow, .maroon .eyebrow{ color:var(--rose-line); }
+  .light .map-cta{ color:var(--crimson-600); }
+
+  /* torn paper edge */
+  .torn{ position:absolute; left:0; width:100%; height:44px; line-height:0; z-index:2; }
+  .torn.top{ top:-1px; }
+  .torn.bottom{ bottom:-1px; transform:scaleY(-1); }
+  .torn svg{ width:100%; height:100%; display:block; animation:paper-sway 5s ease-in-out infinite; filter:drop-shadow(0 8px 10px rgba(0,0,0,0.4)); }
+
+  /* ---------- rose line-art (signature accents) ---------- */
+  .rose{ width:64px; height:64px; }
+  .rose path{ fill:none; stroke:currentColor; stroke-width:1.1; stroke-linecap:round; stroke-linejoin:round; }
+  .rose.corner{ position:absolute; opacity:0.55; }
+  .rose.tl{ top:26px; left:18px; transform:rotate(-8deg); }
+  .rose.br{ bottom:26px; right:18px; transform:rotate(172deg); }
+
+  /* ---------- rose photography accents ---------- */
+  .photo-accent{
+    position:absolute; width:210px; height:210px; background-size:cover; background-position:center;
+    -webkit-mask-image:radial-gradient(circle at center, black 34%, transparent 70%);
+    mask-image:radial-gradient(circle at center, black 34%, transparent 70%);
+    opacity:0.9; pointer-events:none; z-index:-1;
+  }
+  .photo-accent.tl{ top:-36px; left:-40px; }
+  .photo-accent.br{ bottom:-36px; right:-40px; }
+
+  .rose-medallion{
+    width:118px; height:118px; border-radius:50%; background-size:cover; background-position:center 35%;
+    background-image:var(--img-bloom);
+    border:1px solid rgba(57,9,17,0.22); box-shadow:0 16px 34px -14px rgba(57,9,17,0.4);
+    margin:0 auto 6px;
+  }
+
+  .dress-banner{
+    width:100%; max-width:360px; height:130px; margin-top:26px;
+    background-image:var(--img-bloom); background-size:cover; background-position:center 40%;
+    -webkit-mask-image:linear-gradient(to bottom, black 65%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 65%, transparent 100%);
+  }
+
+  .footer-photo{
+    width:150px; height:150px; border-radius:50%; margin:0 auto;
+    background-image:var(--img-single); background-size:cover; background-position:center;
+    -webkit-mask-image:radial-gradient(circle at center, black 55%, transparent 78%);
+    mask-image:radial-gradient(circle at center, black 55%, transparent 78%);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; justify-content:center; padding-top:64px;
+    background-image: linear-gradient(180deg, rgba(13,6,5,0.4) 0%, rgba(13,6,5,0.6) 55%, rgba(13,6,5,0.94) 100%), var(--img-hero);
+    background-size:cover; background-position:center 32%;
+  }
+  .hero .date-tag{ margin:22px 0 6px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; letter-spacing:0.1em; color:var(--rose-line); }
+  .names{ margin-top:18px; }
+  .names .name{ font-size:clamp(44px,11vw,84px); color:var(--ivory); }
+  .names .amp{ font-family:'Cormorant Garamond', serif; font-size:clamp(22px,4vw,30px); color:var(--rose-line); margin:2px 0; display:block; }
+  .hero .sub{ margin-top:26px; max-width:360px; opacity:0.85; }
+  .scroll-cue{ position:absolute; bottom:30px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--rose-line); opacity:0.8; }
+  .scroll-cue .line{ width:1px; height:32px; background:linear-gradient(var(--rose-line), transparent); animation:drift 1.9s ease-in-out infinite; }
+  @keyframes drift{ 0%,100%{ transform:translateY(0); opacity:0.55;} 50%{ transform:translateY(8px); opacity:1;} }
+
+  /* ---------- verse ---------- */
+  .verse-text{ max-width:420px; margin-top:26px; font-size:clamp(20px,3vw,26px); }
+  .verse-cite{ margin-top:20px; font-size:11px; }
+
+  /* ---------- countdown ---------- */
+  .date-lockup{ margin:22px 0 34px; }
+  .date-lockup .day{ font-family:'Cinzel', serif; font-size:13px; letter-spacing:0.34em; text-transform:uppercase; color:var(--rose-line); margin-bottom:8px; }
+  .date-lockup .full-date{ font-size:clamp(32px,7vw,52px); color:var(--ivory); }
+  .countdown{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(8px,2vw,16px); max-width:460px; width:100%; }
+  .cd-cell{ border:1px solid rgba(246,240,232,0.28); padding:clamp(14px,3vw,22px) 4px; position:relative; }
+  .cd-cell::before, .cd-cell::after{ content:''; position:absolute; width:8px; height:8px; border:1px solid var(--rose-line); }
+  .cd-cell::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .cd-cell::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .cd-num{ font-family:'Cinzel', serif; font-weight:600; letter-spacing:0.02em; font-size:clamp(24px,5.6vw,40px); color:var(--ivory); transition:transform 0.4s ease, opacity 0.4s ease; }
+  .cd-num.tick{ transform:translateY(-6px); opacity:0.35; }
+  .cd-label{ margin-top:6px; font-family:'Cinzel', serif; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--rose-line); }
+
+  /* ---------- the day / details rows ---------- */
+  .detail-rows{ margin-top:30px; display:flex; flex-direction:column; gap:24px; max-width:380px; width:100%; }
+  .detail-row{ border-bottom:1px solid rgba(57,9,17,0.15); padding-bottom:18px; }
+  .detail-row .k{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--crimson-600); }
+  .detail-row .v{ font-family:'Cormorant Garamond', serif; font-size:clamp(19px,3vw,24px); margin-top:6px; }
+
+  /* ---------- dress code ---------- */
+  .palette{ display:flex; gap:18px; margin-top:26px; }
+  .swatch{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(57,9,17,0.25); box-shadow:0 4px 10px rgba(0,0,0,0.12); }
+
+  /* ---------- organizer / details maroon panel ---------- */
+  .contact-line{ margin-top:26px; font-family:'Cormorant Garamond', serif; font-size:20px; }
+  .contact-btn{ margin-top:18px; display:inline-block; padding:14px 34px; border:1px solid var(--ivory); color:var(--ivory); text-decoration:none; font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; transition:background 0.3s ease, color 0.3s ease; }
+  .contact-btn:hover{ background:var(--ivory); color:var(--maroon-900); }
+
+  .ornament-strip{ margin-top:56px; width:100%; max-width:320px; opacity:0.7; }
+
+  /* ---------- location ---------- */
+  .map-card{ width:100%; max-width:420px; margin-top:30px; border:1px solid rgba(57,9,17,0.3); text-decoration:none; color:inherit; display:block; overflow:hidden; transition:transform 0.35s ease, border-color 0.35s ease; }
+  .map-card:hover, .map-card:focus-visible{ transform:translateY(-4px); border-color:var(--rose-line); }
+  .map-visual{ height:140px; position:relative; background:
+      linear-gradient(rgba(13,6,5,0.6), rgba(13,6,5,0.8)),
+      repeating-linear-gradient(0deg, rgba(246,240,232,0.08) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(90deg, rgba(246,240,232,0.08) 0 1px, transparent 1px 32px); }
+  .map-pin{ position:absolute; top:50%; left:50%; transform:translate(-50%,-100%); }
+  .map-pin svg{ width:32px; height:32px; filter:drop-shadow(0 6px 10px rgba(0,0,0,0.5)); }
+  .map-pin-pulse{ position:absolute; top:50%; left:50%; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:rgba(201,143,138,0.5); animation:pulse 2.2s ease-out infinite; }
+  @keyframes pulse{ 0%{ transform:scale(0.6); opacity:0.8;} 100%{ transform:scale(3.2); opacity:0;} }
+  .map-body{ padding:20px 22px 24px; text-align:left; }
+  .map-body .venue{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:23px; }
+  .map-body .addr{ font-size:12px; opacity:0.7; margin-top:4px; }
+  .map-cta{ margin-top:14px; display:inline-flex; align-items:center; gap:8px; font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.26em; text-transform:uppercase; color:var(--rose-line); }
+  .map-cta svg{ width:11px; height:11px; transition:transform 0.3s ease; }
+  .map-card:hover .map-cta svg{ transform:translateX(4px); }
+
+  /* ---------- footer ---------- */
+  .footer-section{ min-height:64vh; justify-content:center; }
+  .footer-section .names-sm{ font-size:clamp(26px,5vw,36px); margin:16px 0 22px; }
+  .footer-note{ max-width:340px; opacity:0.8; font-size:14px; line-height:1.85; }
+  .footer-tag{ margin-top:36px; font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; opacity:0.45; }
+
+  @media (max-width:420px){
+    .countdown{ grid-template-columns:repeat(2,1fr); }
+    section{ padding:80px 7vw 90px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero dark" id="hero">
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      Our Nikkah
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+
+    <p class="date-tag reveal delay-1">12 &middot; 09 &middot; 2026</p>
+
+    <div class="names reveal delay-2">
+      <span class="display name">Rishal&nbsp;Ahammed&nbsp;K</span>
+      <span class="amp">&amp;</span>
+      <span class="display name">Susmi&nbsp;K</span>
+    </div>
+
+    <p class="lede sub reveal delay-3">Together with our families, we request the honour of your presence as we begin our journey, God willing</p>
+
+    <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#f6f0e8"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ VERSE ============ -->
+  <section class="light" id="verse">
+    <div class="rose-medallion reveal"></div>
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      A Blessing
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+    <p class="verse-text display reveal delay-1">He paired us with hearts made for our own, so peace could live between us &mdash; woven together with love and tenderness.</p>
+    <p class="verse-cite eyebrow reveal delay-2" style="font-size:10px;">Inspired by Surah Ar-Rum, 30:21</p>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#230508"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="dark" id="countdown-section">
+    <div class="photo-accent tl" style="background-image:var(--img-hero);"></div>
+    <div class="photo-accent br" style="background-image:var(--img-single);"></div>
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      Counting Down
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+    <div class="date-lockup reveal delay-1">
+      <p class="day">Saturday</p>
+      <p class="full-date display">12 &middot; 09 &middot; 2026</p>
+    </div>
+    <div class="countdown reveal delay-2">
+      <div class="cd-cell"><div class="cd-num" id="cd-days">00</div><div class="cd-label">Days</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">Hours</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">Minutes</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">Seconds</div></div>
+    </div>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#f6f0e8"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ THE DAY (details) ============ -->
+  <section class="light" id="details">
+    <div class="photo-accent br" style="background-image:var(--img-bloom); opacity:0.5;"></div>
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      The Day
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+    <p class="lede reveal delay-1" style="margin-top:12px; opacity:0.75;">You are lovingly invited to witness and bless our union</p>
+
+    <div class="detail-rows">
+      <div class="detail-row reveal delay-1"><p class="k">Date</p><p class="v">Saturday, 12th September 2026</p></div>
+      <div class="detail-row reveal delay-2"><p class="k">Time</p><p class="v">10:00 AM onwards</p></div>
+      <div class="detail-row reveal delay-3"><p class="k">Venue</p><p class="v">Annex Auditorium, Melattur, Kerala</p></div>
+    </div>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#230508"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ DRESS CODE ============ -->
+  <!-- <section class="light" style="padding-top:56px;" id="dress-code">
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      Dress Code
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+    <div class="dress-banner reveal delay-1"></div>
+    <p class="lede reveal delay-2" style="margin-top:12px; max-width:320px; opacity:0.75;">We&rsquo;d be delighted if you kept to our colour palette on the day</p>
+    <div class="palette reveal delay-3">
+      <span class="swatch" style="background:#390911;"></span>
+      <span class="swatch" style="background:#9c1c28;"></span>
+      <span class="swatch" style="background:#f6f0e8; border-color:#39091133;"></span>
+      <span class="swatch" style="background:#0d0605;"></span>
+    </div>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#5c0f18"/></svg>
+    </div>
+  </section> -->
+
+  <!-- ============ ORGANIZER / QUESTIONS (maroon) ============ -->
+  <section class="maroon" id="organizer" style="padding-top:64px;">
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      Questions
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+    <p class="lede reveal delay-1" style="margin-top:12px; max-width:320px; opacity:0.85;">For anything at all on the day, please reach out to our family coordinator</p>
+    <p class="contact-line reveal delay-2">Nidhal P &middot; +91 81298 85187</p>
+    <a class="contact-btn reveal delay-3" href="tel:+918129885187">Call the Coordinator</a>
+
+    <svg class="ornament-strip reveal delay-3" viewBox="0 0 320 90" style="color:var(--rose-line)" aria-hidden="true">
+      <path d="M60,70 C60,50 50,40 34,40 C18,40 8,50 8,64 C8,78 20,86 34,82 C48,78 60,86 60,70 Z"/>
+      <path d="M60,70 L60,20"/>
+      <path d="M52,44 C44,44 38,50 36,58"/>
+      <path d="M260,70 C260,50 250,40 234,40 C218,40 208,50 208,64 C208,78 220,86 234,82 C248,78 260,86 260,70 Z"/>
+      <path d="M260,70 L260,20"/>
+      <path d="M252,44 C244,44 238,50 236,58"/>
+      <path d="M110,54 L210,54" stroke-dasharray="2 6"/>
+      <circle cx="160" cy="54" r="4"/>
+    </svg>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#f6f0e8"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ LOCATION ============ -->
+  <section class="light" id="location" style="padding-top:64px;">
+    <div class="photo-accent tl" style="background-image:var(--img-bloom); opacity:0.6;"></div>
+    <p class="eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+      Location
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z"/></svg>
+    </p>
+    <p class="lede reveal delay-1" style="margin-top:12px; opacity:0.8;">Tap below for directions</p>
+
+    <a class="map-card reveal delay-2" href="https://maps.app.goo.gl/kCMV2BLWNxwL3S3F6" target="_blank" rel="noopener">
+      <div class="map-visual">
+        <div class="map-pin-pulse"></div>
+        <div class="map-pin">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" fill="#c98f8a"/>
+            <circle cx="12" cy="9" r="2.6" fill="#0d0605"/>
+          </svg>
+        </div>
+      </div>
+      <div class="map-body">
+        <p class="venue">Annex Auditorium</p>
+        <p class="addr">Melattur, Kerala &middot; India</p>
+        <span class="map-cta">Open in Google Maps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <div class="torn bottom" aria-hidden="true">
+      <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 L0,14 L20,24 L46,6 L74,20 L100,4 L128,22 L156,8 L182,26 L210,10 L236,22 L264,4 L290,18 L318,6 L344,24 L372,8 L398,20 L424,4 L452,22 L478,10 L500,18 L500,40 Z" fill="#0d0605"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <section class="dark footer-section" id="footer">
+    <div class="footer-photo reveal"></div>
+    <p class="eyebrow reveal delay-1" style="margin-top:18px;">With Love &amp; Blessings</p>
+    <p class="names-sm display reveal delay-2">Rishal Ahammed K &amp; Susmi K</p>
+    <p class="footer-note reveal delay-3">Your presence and prayers mean the world to us as we begin this new chapter.</p>
+    <p class="footer-tag reveal delay-3">12 &middot; 09 &middot; 2026 &nbsp;&mdash;&nbsp; Melattur, Kerala</p>
+  </section>
+
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); } });
+  }, { threshold:0.2 });
+  revealEls.forEach(el=>io.observe(el));
+
+  const fill = document.getElementById('progressFill');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const height = h.scrollHeight - h.clientHeight;
+    fill.style.width = (height > 0 ? (scrolled/height)*100 : 0) + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  const TARGET = new Date('2026-09-12T10:00:00');
+  const dEl = document.getElementById('cd-days');
+  const hEl = document.getElementById('cd-hours');
+  const mEl = document.getElementById('cd-mins');
+  const sEl = document.getElementById('cd-secs');
+  let prev = {d:null,h:null,m:null,s:null};
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function setCell(el, value, key){
+    if(prev[key] !== value){
+      el.classList.add('tick');
+      setTimeout(()=>{ el.textContent = pad(value); el.classList.remove('tick'); }, 180);
+      prev[key] = value;
+    }
+  }
+  function tick(){
+    const now = new Date();
+    let diff = Math.max(0, TARGET - now);
+    setCell(dEl, Math.floor(diff/86400000), 'd');
+    setCell(hEl, Math.floor((diff%86400000)/3600000), 'h');
+    setCell(mEl, Math.floor((diff%3600000)/60000), 'm');
+    setCell(sEl, Math.floor((diff%60000)/1000), 's');
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
